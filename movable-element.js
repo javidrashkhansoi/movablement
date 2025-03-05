@@ -29,9 +29,9 @@
 
 class MovableElement extends HTMLElement {
   /** @type {Map<HTMLElement, HTMLElement[]>} */
-  static targetsChildren = new Map();
+  static #targetsChildren = new Map();
   /** @type {PossibleToValues[]} */
-  static possibleToValues = ["start", "end", "before", "after", "replace", "swap"];
+  static #possibleToValues = ["start", "end", "before", "after", "replace", "swap"];
 
   /** @type {boolean} */
   #isManual;
@@ -110,8 +110,8 @@ class MovableElement extends HTMLElement {
     this.#breakpoint = matchMedia(mediaQuery);
     this.#to = this.getAttribute("to")?.trim() ?? "end";
 
-    if (!MovableElement.possibleToValues.includes(this.#to) && !this.#to.match(/^\-?\d+$/)) {
-      throw new Error(`attribute to can be a integer or ${MovableElement.possibleToValues.join(", ")}.`);
+    if (!MovableElement.#possibleToValues.includes(this.#to) && !this.#to.match(/^\-?\d+$/)) {
+      throw new Error(`attribute to can be a integer or ${MovableElement.#possibleToValues.join(", ")}.`);
     }
 
     this.#isInit = true;
@@ -165,7 +165,7 @@ class MovableElement extends HTMLElement {
     const index = Number(this.#to);
     const isNegativeIndex = index < 0;
 
-    if (MovableElement.possibleToValues.includes(this.#to)) {
+    if (MovableElement.#possibleToValues.includes(this.#to)) {
       this.#action = this.#to;
 
       return;
@@ -333,12 +333,12 @@ class MovableElement extends HTMLElement {
 
   /** @param {HTMLCollection} children */
   set #targetChildren(children) {
-    MovableElement.targetsChildren.set(this.#target, [...children]);
+    MovableElement.#targetsChildren.set(this.#target, [...children]);
   }
 
   /** @returns {HTMLElement[]} */
   get #targetChildren() {
-    return MovableElement.targetsChildren.get(this.#target);
+    return MovableElement.#targetsChildren.get(this.#target);
   }
 }
 
