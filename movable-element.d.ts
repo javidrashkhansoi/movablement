@@ -70,6 +70,7 @@ declare global {
 }
 
 export {
+  MovableElement,
   PossibleToValues,
   PossibleActionValues,
   PossiblePositionValues,
