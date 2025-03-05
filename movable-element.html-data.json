@@ -1,0 +1,53 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "movable-element",
+      "description": "The **`movable-element`** element allows you to move an element within the DOM.",
+      "attributes": [
+        {
+          "name": "target",
+          "description": "**Required**. The **`ID`** of the target element without the **`#`**."
+        },
+        {
+          "name": "media",
+          "description": "**Optional**. Media query for applying the movable element. Default is **`(max-width: 768px)`**."
+        },
+        {
+          "name": "manual",
+          "description": "**Optional**. If the **`manual`** attribute is present, the element will not move automatically."
+        },
+        {
+          "name": "to",
+          "description": "**Optional**. The position of the element relative to the target element. Accepts **integer** values or **`start`**, **`end`**, **`before`**, **`after`**, **`replace`**, and **`swap`**. Default is **`end`**.",
+          "values": [
+            {
+              "name": "start",
+              "description": "The element will be the **first child** of the target element."
+            },
+            {
+              "name": "end",
+              "description": "The element will be the **last child** of the target element."
+            },
+            {
+              "name": "before",
+              "description": "The element will be placed **before** the target element."
+            },
+            {
+              "name": "after",
+              "description": "The element will be placed **after** the target element."
+            },
+            {
+              "name": "replace",
+              "description": "The element will **replace** the target element."
+            },
+            {
+              "name": "swap",
+              "description": "The element will **swap** places with the target element."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

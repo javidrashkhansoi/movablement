@@ -1,0 +1,3 @@
+:where(movable-element) {
+  display: contents;
+}
