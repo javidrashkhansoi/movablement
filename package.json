@@ -1,10 +1,10 @@
 {
   "name": "movablement",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Javid Gulmaliyev",
   "main": "movable-element.js",
   "types": "movable-element.d.ts",
-  "description": "`<movable-element>` is a custom **HTML** element that allows you to automatically or manually move an element in the **DOM** relative to another element (target) based on specified attributes. The element can be moved to various positions relative to the target element, such as `start`, `end`, `before`, `after`, `replace`, and `swap`. Automatic movement occurs only under certain media query conditions (e.g., when the screen size changes).",
+  "description": "<movable-element> is a custom HTML element that allows you to automatically or manually move an element in the DOM relative to another element (target) based on specified attributes. The element can be moved to various positions relative to the target element, such as start, end, before, after, replace, and swap. Automatic movement occurs only under certain media query conditions (e.g., when the screen size changes).",
   "license": "MIT",
   "keywords": [
     "movable-element",
