@@ -71,6 +71,8 @@ When to use the `init()` or `reinit()` method?
 
 ## Usage Examples
 
+**You can see live examples of using `<movable-element>` on [CodePen](https://codepen.io/collection/PooLNJ).**
+
 ### Example 1: Automatic element movement
 
 ```html
