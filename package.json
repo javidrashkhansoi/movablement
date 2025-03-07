@@ -1,6 +1,6 @@
 {
   "name": "movablement",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "author": "Javid Gulmaliyev",
   "main": "movable-element.js",
   "types": "movable-element.d.ts",

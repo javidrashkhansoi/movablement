@@ -270,15 +270,16 @@ class MovableElement extends HTMLElement {
     if (this.#isInit) {
       this.#destroy();
 
-      this.#action = null;
-      this.#position = null;
-
-      this.#isInit = null;
       this.#target = null;
       this.#breakpoint = null;
-      this.#isMoved = null;
       this.#to = null;
+      this.#isInit = null;
+      this.#action = null;
       this.#targetChild = null;
+      this.#position = null;
+      this.#isMoved = null;
+
+      this.#placeholder.remove();
     }
   }
 
