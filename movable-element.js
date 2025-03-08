@@ -26,10 +26,10 @@
 /** @typedef {import("./movable-element.d.ts").PossibleActionValues} PossibleActionValues */
 /** @typedef {import("./movable-element.d.ts").PossiblePositionValues} PossiblePositionValues  */
 /** @typedef {import("./movable-element.d.ts").MovableElementInitAttributes} MovableElementInitAttributes */
+/** @typedef {import("./movable-element.d.ts").getTargetChild} getTargetChild */
+/** @typedef {import("./movable-element.d.ts").reinit} reinit */
 
 class MovableElement extends HTMLElement {
-  /** @type {Map<HTMLElement, HTMLElement[]>} */
-  static #targetsChildren = new Map();
   /** @type {PossibleToValues[]} */
   static #possibleToValues = ["start", "end", "before", "after", "replace", "swap"];
 
@@ -41,12 +41,12 @@ class MovableElement extends HTMLElement {
   #breakpoint;
   /** @type {PossibleToValues} */
   #to;
+  /** @type {number} */
+  #index;
   /** @type {boolean} */
   #isInit;
   /** @type {PossibleActionValues} */
   #action;
-  /** @type {HTMLElement} */
-  #targetChild;
   /** @type {PossiblePositionValues} */
   #position;
   /** @type {AbortController} */
@@ -103,10 +103,6 @@ class MovableElement extends HTMLElement {
       return;
     }
 
-    if (!this.#targetChildren) {
-      this.#targetChildren = this.#target.children;
-    }
-
     this.#breakpoint = matchMedia(mediaQuery);
     this.#to = this.getAttribute("to")?.trim() ?? "end";
 
@@ -120,19 +116,21 @@ class MovableElement extends HTMLElement {
   #differenceCheck() {
     let isSame = this.#target === this;
 
+    this.#index = Number(this.#to);
+
     if (!isSame) {
       switch (this.#to) {
         case "start":
         case "0":
 
-          isSame = this.#targetChildren[0] === this;
+          isSame = this.#getTargetChild(0) === this;
 
           break;
 
         case "end":
         case "-1":
 
-          isSame = this.#targetChildren.at(-1) === this;
+          isSame = this.#getTargetChild(-1) === this;
 
           break;
 
@@ -150,7 +148,7 @@ class MovableElement extends HTMLElement {
 
         default:
 
-          isSame = this.#targetChildren.at(Number(this.#to)) === this;
+          isSame = this.#getTargetChild(this.#index) === this;
 
           break;
       }
@@ -162,8 +160,7 @@ class MovableElement extends HTMLElement {
   }
 
   #setAction() {
-    const index = Number(this.#to);
-    const isNegativeIndex = index < 0;
+    const isNegativeIndex = this.#index < 0;
 
     if (MovableElement.#possibleToValues.includes(this.#to)) {
       this.#action = this.#to;
@@ -171,9 +168,7 @@ class MovableElement extends HTMLElement {
       return;
     }
 
-    this.#targetChild = this.#targetChildren.filter(child => child !== this).at(index);
-
-    if (!this.#targetChild) {
+    if (!this.#getTargetChild(this.#index)) {
       this.#action = isNegativeIndex ? "start" : "end";
 
       return;
@@ -181,6 +176,21 @@ class MovableElement extends HTMLElement {
 
     this.#action = "in";
     this.#position = isNegativeIndex ? "after" : "before";
+  }
+
+  /** @type {getTargetChild} */
+  #getTargetChild(index) {
+    const targetChildren = [...this.#target.children].filter(
+      /** @param {HTMLElement} child */
+      child => {
+        if (child instanceof MovableElement && child.isMoved) {
+          return;
+        }
+
+        return child;
+      });
+
+    return targetChildren.at(index);
   }
 
   #init() {
@@ -244,7 +254,7 @@ class MovableElement extends HTMLElement {
   }
 
   __in__() {
-    this.#targetChild[this.#position](this);
+    this.#getTargetChild(this.#index)[this.#position](this);
   }
 
   /** @param { MovableElementInitAttributes } attributes */
@@ -266,16 +276,24 @@ class MovableElement extends HTMLElement {
     }
   }
 
-  destroy() {
+  /** @param {boolean} isReturn */
+  destroy(isReturn) {
     if (this.#isInit) {
       this.#destroy();
 
+      if (isReturn) {
+        this.#isManual = true;
+
+        this.return();
+      }
+
+      this.#isManual = null;
       this.#target = null;
       this.#breakpoint = null;
       this.#to = null;
+      this.#index = null;
       this.#isInit = null;
       this.#action = null;
-      this.#targetChild = null;
       this.#position = null;
       this.#isMoved = null;
 
@@ -283,9 +301,9 @@ class MovableElement extends HTMLElement {
     }
   }
 
-  /** @param { MovableElementInitAttributes } attributes */
-  reinit(attributes = {}) {
-    this.destroy();
+  /** @type {reinit} */
+  reinit(attributes = {}, isReturn) {
+    this.destroy(isReturn);
     this.init(attributes);
   }
 
@@ -332,14 +350,8 @@ class MovableElement extends HTMLElement {
     this.#isMoved ? this.return() : this.move();
   }
 
-  /** @param {HTMLCollection} children */
-  set #targetChildren(children) {
-    MovableElement.#targetsChildren.set(this.#target, [...children]);
-  }
-
-  /** @returns {HTMLElement[]} */
-  get #targetChildren() {
-    return MovableElement.#targetsChildren.get(this.#target);
+  get isMoved() {
+    return this.#isMoved;
   }
 }
 

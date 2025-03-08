@@ -16,6 +16,9 @@ type MovableElementInitAttributes = {
   manual?: boolean;
 };
 
+type getTargetChild = (index: number) => HTMLElement;
+type reinit = (attributes?: MovableElementInitAttributes, isReturn?: boolean) => void;
+
 declare class MovableElement extends HTMLElement {
   constructor();
 
@@ -35,10 +38,10 @@ declare class MovableElement extends HTMLElement {
   init(attributes?: MovableElementInitAttributes): void;
 
   /** Completely deinitializes the element */
-  destroy(): void;
+  destroy(isReturn?: boolean): void;
 
   /** Reinitializes the element */
-  reinit(attributes?: MovableElementInitAttributes): void;
+  reinit: reinit;
 
   /** Method for manually moving the element to the position specified in the `to` attribute relative to the target element */
   move(): void;
@@ -48,6 +51,9 @@ declare class MovableElement extends HTMLElement {
 
   /** Method for manually toggling between moving and returning. If the element is moved, it will be returned and vice versa */
   toggle(): void;
+
+  /** Returns `true` if the element is moved and `false` if it is not moved */
+  get isMoved(): boolean;
 }
 
 declare interface MovableElementEvent extends CustomEvent {
@@ -74,5 +80,7 @@ export {
   PossibleToValues,
   PossibleActionValues,
   PossiblePositionValues,
-  MovableElementInitAttributes
+  MovableElementInitAttributes,
+  getTargetChild,
+  reinit
 }
