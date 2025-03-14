@@ -1,6 +1,16 @@
-# `<movable-element>`
+![<movable-element>](movable-element.png)
 
-[![Socket Badge](https://socket.dev/api/badge/npm/package/movablement/2.0.0)](https://socket.dev/npm/package/movablement/overview/2.0.0)
+![License](https://img.shields.io/github/license/javidrashkhansoi/movablement?label=LICENSE&labelColor=%238b8c8d&color=%23a41931)
+![Static Badge](https://img.shields.io/badge/Types-Included-%233178c6?logo=typescript&logoColor=%233178c6&labelColor=white)
+
+[![NPM Version](https://img.shields.io/npm/v/movablement?logo=npm&logoColor=%23cb0000&labelColor=%23231f20&color=%23cb0000)](https://www.npmjs.com/package/movablement)
+[![NPM Downloads](https://img.shields.io/npm/dw/movablement?logo=npm&logoColor=%23cb0000&labelColor=%23231f20&color=%23cb0000)](https://www.npmjs.com/package/movablement)
+[![NPM gzip size](https://img.shields.io/bundlejs/size/movablement?logo=npm&logoColor=%23cb0000&label=gzip&labelColor=%23231f20&color=%23cb0000)](https://www.npmjs.com/package/movablement)
+
+[![Static Badge](https://img.shields.io/badge/DEMO-CodePen-white?logo=codepen&logoColor=white&labelColor=%23080808)](https://codepen.io/collection/PooLNJ)
+
+
+# `<movable-element>`
 
 `<movable-element>` is a custom **HTML** element that allows you to automatically or manually move an element in the **DOM** relative to another element (target) based on specified attributes. The element can be moved to various positions relative to the target element, such as `start`, `end`, `before`, `after`, `replace`, and `swap`. Automatic movement occurs only under certain media query conditions (e.g., when the screen size changes).
 
@@ -72,9 +82,7 @@ If `isReturn` is set to `true`, the element will be returned to its original pla
 - `to` (optional): A string defining the position to which the element will be moved relative to the target element. Possible values: `start`, `end`, `before`, `after`, `replace`, `swap`, or a numeric value to specify the position among the child elements of the target element. If the element already has a `to` attribute, this parameter will overwrite it. By default, `end` is used.
 - `manual` (optional): A boolean value (`true` or `false`) that determines whether the element will move automatically or manually. If set to `true`, the element will not move automatically, and the `move()`, `return()`, or `toggle()` methods will need to be called to move it. If the element already has a `manual` attribute, this parameter will overwrite it. By default, `true` is used.
 
-> :information_source:
->
-> When to use the `init()` or `reinit()` method?
+> :information_source: When to use the `init()` or `reinit()` method?
 > - Element initialization: When first using the element, if you want to set attributes programmatically rather than through **HTML**.
 > - Changing settings: If you need to change the element's attributes dynamically (e.g., in response to user actions or changes in the application).
 > - Manual control: If you want to temporarily disable automatic movement and control the element manually.
