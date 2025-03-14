@@ -37,7 +37,7 @@ declare class MovableElement extends HTMLElement {
    */
   init(attributes?: MovableElementInitAttributes): void;
 
-  /** Completely deinitializes the element */
+  /** Completely deinitializes the element. If `isReturn` is `true`, returns the element to its original place */
   destroy(isReturn?: boolean): void;
 
   /** Reinitializes the element */
