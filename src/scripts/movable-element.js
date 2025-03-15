@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-/** @typedef {import("./movable-element.d.ts").PossibleToValues} PossibleToValues */
-/** @typedef {import("./movable-element.d.ts").PossibleActionValues} PossibleActionValues */
-/** @typedef {import("./movable-element.d.ts").PossiblePositionValues} PossiblePositionValues  */
-/** @typedef {import("./movable-element.d.ts").MovableElementInitAttributes} MovableElementInitAttributes */
-/** @typedef {import("./movable-element.d.ts").getTargetChild} getTargetChild */
-/** @typedef {import("./movable-element.d.ts").reinit} reinit */
+/** @typedef {import("../types/movable-element.d.ts").PossibleToValues} PossibleToValues */
+/** @typedef {import("../types/movable-element.d.ts").PossibleActionValues} PossibleActionValues */
+/** @typedef {import("../types/movable-element.d.ts").PossiblePositionValues} PossiblePositionValues  */
+/** @typedef {import("../types/movable-element.d.ts").MovableElementInitAttributes} MovableElementInitAttributes */
+/** @typedef {import("../types/movable-element.d.ts").getTargetChild} getTargetChild */
+/** @typedef {import("../types/movable-element.d.ts").reinit} reinit */
 
 class MovableElement extends HTMLElement {
   /** @type {PossibleToValues[]} */
