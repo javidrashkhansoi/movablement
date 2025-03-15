@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/github/license/javidrashkhansoi/movablement?label=LICENSE&labelColor=%238b8c8d&color=%23a41931)
 ![Static Badge](https://img.shields.io/badge/Types-Included-%233178c6?logo=typescript&logoColor=%233178c6&labelColor=white)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/movablement/2.0.2)](https://socket.dev/npm/package/movablement/overview/2.0.2)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/movablement/2.1.1)](https://socket.dev/npm/package/movablement/overview/2.1.1)
 
 [![NPM Version](https://img.shields.io/npm/v/movablement?logo=npm&logoColor=%23cb0000&labelColor=%23231f20&color=%23cb0000)](https://www.npmjs.com/package/movablement)
 [![NPM Downloads](https://img.shields.io/npm/dw/movablement?logo=npm&logoColor=%23cb0000&labelColor=%23231f20&color=%23cb0000)](https://www.npmjs.com/package/movablement)
