@@ -9,6 +9,15 @@
 
 [![Static Badge](https://img.shields.io/badge/DEMO-CodePen-white?logo=codepen&logoColor=white&labelColor=%23080808)](https://codepen.io/collection/PooLNJ)
 
+- [Installation](#installation)
+- [Attributes](#attributes)
+- [Properties](#properties)
+- [Methods](#methods)
+- [Parameters](#parameters)
+- [Events](#events)
+- [Usage](#usage-examples)
+- [License](#license)
+
 
 # `<movable-element>`
 
@@ -96,7 +105,7 @@ If `isReturn` is set to `true`, the element will be returned to its original pla
 
 ## Usage Examples
 
-**You can see live examples of using `<movable-element>` on [CodePen](https://codepen.io/collection/PooLNJ).**
+**You can see live examples of using `<movable-element>` on *[CodePen](https://codepen.io/collection/PooLNJ)*.**
 
 ### Example 1: Automatic element movement
 
